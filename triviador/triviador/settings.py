@@ -1,5 +1,5 @@
 """
-Django settings for triviador project.
+Django settings for trivia project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -11,13 +11,14 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+RUTA_PROYECTO=os.path.dirname(os.path.realpath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hgyf6q4jmr=y#d$o_a3heg^_r)7-!h-s#4-yoi9hcj6^^g2x&&'
+SECRET_KEY = '8izr))0m3j-oig7oxruqk_kc-yan+nz7j=(&d5xh1&p$1+*)qy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'trivia.apps.pregunta'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'triviador.urls'
+ROOT_URLCONF = 'trivia.urls'
 
-WSGI_APPLICATION = 'triviador.wsgi.application'
+WSGI_APPLICATION = 'trivia.wsgi.application'
 
 
 # Database
@@ -81,3 +83,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#MEDIA_ROOT=os.path.join(BASE_DIR,'trivia/media')
+MEDIA_URL="/media/"
+TEMPLATE_DIRS=(os.path.join(RUTA_PROYECTO,"plantillas"),)
+STATICFILES_DIRS=(os.path.join(RUTA_PROYECTO,"static"),)
