@@ -1,14 +1,24 @@
-{%extends "base.html"%}
-	{%block title%}
-		<title>registro deususarios</title>
-	{%endblock%}
-
-	{%block contenido%}
-		<form action="" method="post">
-			{%csrf_token%}
-			{{formulario.as_p}}
-			Pais:<input type="text" name="pais" value=""><br>
-			Telefono:<input type="text" name="telefono" value=""><br>
-			<input type="submit" name"bregistro" value="Registro">
+{% extends "base.html" %}
+{%block title%}
+		<title>registro de usuarios</title>
+{%endblock%}
+{% block container %}
+	<div class="span7">
+	<div class="well">
+		<h2 class="text-center">Crear usuario</h2>
+		{% if form.subject.errors %}
+    		<ol>
+    			{% for error in user_form.subject.errors %}
+        			<li><strong>{{ error|escape }}</strong></li>
+    			{% endfor %}
+    		</ol>
+		{% endif %}
+		<form class="form-horizontal text-center center-block" id="registerForm" action="" method="post">
+			{% csrf_token %}
+			{{ user_form.as_p }}
+			<button type="submit" class="btn btn-primary">Registrarme</button>
 		</form>
-	{%endblock%}
+	</div>
+	</div>
+	
+{%endblock%}
