@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
     	<meta charset="utf-8">
-    	<title>Triviador</title>
+    	{% block title %}
+      {% endblock %}
     	<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
     	<style type="text/css">
       		body {
@@ -26,22 +27,46 @@
               <li class="active"><a href="#">Inicio</a></li>
               <li><a href="">facebook</a></li>
               <li><a href="">partidsa en juego</a></li>
+              <li><a href="registro.html">Registrate</a></li>
             </ul>
             <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
               <button type="submit" class="btn btn-primary">Login</button>
-              <button type="submit" class="btn btn-success">registrate</button>
+
             </form>
           </div>
         </div>
       </div>
     </div>
-    
+    <br>
+    <br>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">TriviarOnline</li>
+              <li class="active"><a href="#">historial de partidas</a></li>
+              <li><a href="#">Puntuacion de jugadores</a></li>
+              <li><a href="#">Crear Partida</a></li>
+              <li><a href="#">Denunciar abusos</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="hero-unit">
+            <h1>triviaOnline.bo</h1>
+            contenido
+            varias lineas de texto
+          </div>
           {%block container%}
 
           {%endblock%}
-        
+        </div>  
+      </div>
+    <hr>
+    </div>
 	<footer>
     	<p><h8>&copy; copyrigth Sis-Uatf-SSS<h8></p>
     </footer>

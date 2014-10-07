@@ -4,4 +4,5 @@ from views import *
 
 urlpatterns = patterns('',
     url(r'^$', pagina_index),
+    url(r'^registro/$',registro),   
 )

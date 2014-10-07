@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+	{%block title%}
+		<title>registro deususarios</title>
+	{%endblock%}
+
+	{%block contenido%}
+		<form action="" method="post">
+			{%csrf_token%}
+			{{formulario.as_p}}
+			Pais:<input type="text" name="pais" value=""><br>
+			Telefono:<input type="text" name="telefono" value=""><br>
+			<input type="submit" name"bregistro" value="Registro">
+		</form>
+	{%endblock%}
