@@ -11,4 +11,5 @@ urlpatterns = patterns('',
    	url(r'^categoria/$',addCategoria),
    	url(r'^respuestas/$',addRespuesta),
    	url(r'^preguntas/$',addPregunta),
+   	url(r'^actualizar/$',set_registro),
 )

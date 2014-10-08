@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from thumbs import ImageWithThumbsField
 # Create your models here.
 class Categorias(models.Model):
 	nombre=models.CharField(max_length=100)
@@ -26,6 +27,10 @@ class Partida(models.Model):
 	Num_preguntas=models.IntegerField()
 	categoria_par=models.ManyToManyField(Categorias)
 	usuario=models.ForeignKey(User)
+class Perfil(models.Model):
+	firt_name=models.CharField(max_length=30)
+	last_name=models.CharField(max_length=30)
+	avatar=ImageWithThumbsField(upload_to="img_user", sizes=((50,50),(200,200)))
 
 
 

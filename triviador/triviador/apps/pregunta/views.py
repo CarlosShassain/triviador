@@ -59,7 +59,7 @@ def addCategoria(request):
 		form_cat=Categorias_Form(request.POST)
 		if(form_cat.is_valid()):
 			form_cat.save()
-			return HttpResponseRedirect("/blog/categorias/")
+			return HttpResponseRedirect("/blog/categoria/")
 	form_cat=Categorias_Form()
 	return render_to_response("blog/categorias.html",{"form":form_cat},RequestContext(request))
 def addPregunta(request):
@@ -78,3 +78,13 @@ def addRespuesta(request):
 			return HttpResponseRedirect("/blog/respuestas/")
 	form_res=Respuestas_Opcionales_Form()
 	return render_to_response("blog/respuestas.html",{"form":form_res},RequestContext(request))
+@login_required
+def set_registro(request):
+	if request.method=="POST":
+		formulario_registro=Perfil_Form(request.POST)
+		if formulario_registro.is_valid():
+			formulario_registro.save()
+			return HttpResponseRedirect("/login/")
+	else:
+		formulario_registro=Perfil_Form()
+	return render_to_response("usuario/setregistro.html",{'form':formulario_registro},context_instance=RequestContext(request))

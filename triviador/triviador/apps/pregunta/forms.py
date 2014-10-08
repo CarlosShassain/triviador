@@ -42,3 +42,6 @@ class Respuestas_Opcionales_Form(ModelForm):
 	class Meta:
 		model=Respuestas_Opcionales
 		#exclude=["pregunta"]
+class Perfil_Form(ModelForm):
+	class Meta:
+		model=Perfil
