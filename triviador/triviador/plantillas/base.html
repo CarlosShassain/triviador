@@ -26,15 +26,19 @@
             <ul class="nav">
               <li class="active"><a href="#">Inicio</a></li>
               <li><a href="">facebook</a></li>
-              <li><a href="">partidsa en juego</a></li>
-              <li><a href="/blog/registro">Registrate</a></li>
+              <li><a href="">partidas en juego</a></li>
             </ul>
+            {% if user.is_anonymous %}
             <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn btn-primary">Login</button>
-
+              <a href="/blog/registro" class="btn btn-primary">Registrate</a>
+              <a href="/blog/login"  class="btn btn-primary">Login</a>
             </form>
+            {%endif%}
+            {% if not user.is_anonymous %}
+            <form class="navbar-form pull-right">
+              <a href="/blog/logout"  class="btn btn-primary">{{user}} LogOut</a>
+            </form>
+            {%endif%}
           </div>
         </div>
       </div>

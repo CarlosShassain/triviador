@@ -1,3 +1,6 @@
+
+
+
 {% extends "base.html" %}
 {%block title%}
 		<title>registro de usuarios</title>
@@ -5,19 +8,22 @@
 {% block container %}
 	<div class="span7">
 	<div class="well">
-		<h2 class="text-center">Crear usuario</h2>
+		<h2 class="text-center">Ingrese</h2>
 		{% if form.subject.errors %}
     		<ol>
-    			{% for error in user_form.subject.errors %}
+    			{% for error in form.subject.errors %}
         			<li><strong>{{ error|escape }}</strong></li>
     			{% endfor %}
     		</ol>
 		{% endif %}
 		<form class="form-horizontal text-center center-block" id="registerForm" action="" method="post">
+			{{form.as_ul}}
 			{% csrf_token %}
-			{{ user_form.as_p }}
-			<button type="submit" class="btn btn-primary">Registrarme</button>
+			<br>
+			<button type="submit" class="btn btn-primary">entrar</button>
+			<a href="/blog/registro" class="btn btn-warning">Registrate</a>
 		</form>
+
 	</div>
 	</div>
 {%endblock%}

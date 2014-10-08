@@ -43,3 +43,22 @@ def registro(request):
 		'body_class': 'register',
 	}
 	return render_to_response("usuario/registro.html", diccionario, context_instance=RequestContext(request))
+def login_usuario(request):
+	if request.method=="POST":
+		form=AuthenticationForm(request.POST)
+		if(form.is_valid()==False):
+			username=request.POST["username"]
+			password=request.POST["password"]
+			resultado=authenticate(username=username,password=password)
+			if resultado:
+				login(request,resultado)
+				request.session["name"]=username
+				return HttpResponseRedirect("/blog/perfil/")
+	form=AuthenticationForm()
+	return render_to_response("usuario/login.html",{"form":form},RequestContext(request))
+
+def perfil(request):
+	return render_to_response("usuario/perfil.html",{"nombre":request.session["name"]},RequestContext(request))
+def logout_usuario(request):
+	logout(request)
+	return HttpResponseRedirect("/blog/")

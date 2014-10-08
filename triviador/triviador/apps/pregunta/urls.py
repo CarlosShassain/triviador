@@ -4,5 +4,8 @@ from views import *
 
 urlpatterns = patterns('',
     url(r'^$', pagina_index),
-    url(r'^registro/$',registro),   
+    url(r'^registro/$',registro), 
+   	url(r'^login/$',login_usuario), 
+   	url(r'^perfil/$',perfil),  
+   	url(r'^logout/$',logout_usuario),
 )
