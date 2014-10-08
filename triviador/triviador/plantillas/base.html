@@ -51,10 +51,16 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">TriviarOnline</li>
-              <li class="active"><a href="#">historial de partidas</a></li>
+              <li ><a href="#">historial de partidas</a></li>
               <li><a href="#">Puntuacion de jugadores</a></li>
-              <li><a href="#">Crear Partida</a></li>
               <li><a href="#">Denunciar abusos</a></li>
+              {%if not user.is_anonymous%}
+              <li class="nav-header">Administrar</li>
+              <li><a href="#">Crear Partida</a></li>
+              <li><a href="/blog/categoria">categoria</a></li>
+              <li><a href="/blog/preguntas">preguntas</a></li>
+              <li><a href="/blog/respuestas">respuestas</a></li>
+              {%endif%}
             </ul>
           </div>
         </div>

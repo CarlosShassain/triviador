@@ -14,17 +14,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse 
 from django.http import *
 
-from .models import PerfilUser
+from .models import *
 def pagina_index(request):
 	return render_to_response("blog/index.html",{},context_instance=RequestContext(request))
-#def registro(request):
-#	if request.method=="POST":
-#		form=PerfilUser_Form(request.POST)
-#		if(form.is_valid()):
-#			form.save()
-#			return HttpResponseRedirect("/blog/")
-#	form=PerfilUser_Form()
-#	return render_to_response("usuario/registro.html",{"form":form},RequestContext(request))
 def registro(request):
 	username = password = email =''
 	if request.POST:
@@ -33,7 +25,7 @@ def registro(request):
 			usuario = User(username=request.POST['username'], email=request.POST['email'])
 			usuario.set_password(request.POST['password1'])
 			usuario.save()
-			return HttpResponseRedirect("/blog/")
+			return HttpResponseRedirect("/blog/login")
 	else:
 		user_form = UserCreateForm()
 
@@ -62,3 +54,27 @@ def perfil(request):
 def logout_usuario(request):
 	logout(request)
 	return HttpResponseRedirect("/blog/")
+def addCategoria(request):
+	if(request.method=="POST"):
+		form_cat=Categorias_Form(request.POST)
+		if(form_cat.is_valid()):
+			form_cat.save()
+			return HttpResponseRedirect("/blog/categorias/")
+	form_cat=Categorias_Form()
+	return render_to_response("blog/categorias.html",{"form":form_cat},RequestContext(request))
+def addPregunta(request):
+	if(request.method=="POST"):
+		form_pre=Pregunta_Form(request.POST)
+		if(form_pre.is_valid()):
+			form_pre.save()
+			return HttpResponseRedirect("/blog/preguntas/")
+	form_pre=Pregunta_Form()
+	return render_to_response("blog/preguntas.html",{"form":form_pre},RequestContext(request))
+def addRespuesta(request):
+	if(request.method=="POST"):
+		form_res=Respuestas_Opcionales_Form(request.POST)
+		if(form_res.is_valid()):
+			form_res.save()
+			return HttpResponseRedirect("/blog/respuestas/")
+	form_res=Respuestas_Opcionales_Form()
+	return render_to_response("blog/respuestas.html",{"form":form_res},RequestContext(request))

@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
-class PerfilUser(models.Model):
-	
-	ciudad=models.CharField(max_length=10)
-	telefono=models.CharField(max_length=10);
 class Categorias(models.Model):
 	nombre=models.CharField(max_length=100)
 	def __unicode__(self):
@@ -20,4 +16,16 @@ class Respuestas_Opcionales(models.Model):
 	resp3=models.CharField(max_length=150)
 	resp2=models.CharField(max_length=150)
 	pregunta=models.ForeignKey(Pregunta)
+class Juego_user(models.Model):
+	part_perdido=models.IntegerField()
+	part_ganado=models.IntegerField()
+	puntuacion=models.IntegerField()
+class Partida(models.Model):
+	Titulo_p=models.CharField(max_length=150)
+	Tipo=models.CharField(max_length=15)
+	Num_preguntas=models.IntegerField()
+	categoria_par=models.ManyToManyField(Categorias)
+	usuario=models.ForeignKey(User)
+
+
 
